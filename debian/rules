@@ -73,3 +73,7 @@ binary-modules: prep-deb-files
 	dh_md5sums
 	dh_builddeb --destdir=$(DEB_DESTDIR)
 
+# https://github.com/aptly-dev/aptly/issues/989
+# required for aptly 1.4 in jammy
+override_dh_builddeb:
+	dh_builddeb -- -Zxz
